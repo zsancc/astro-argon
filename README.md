@@ -4,8 +4,8 @@
 
 ## Languages
 
-- 中文: `docs/README.zh-CN.md`
-- English: `docs/README.en.md`
+- [中文](docs/README.zh-CN.md)
+- [English](docs/README.en.md)
 
 ## Tech Stack
 

@@ -3,6 +3,14 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
 
+export function postIdToSlug(id: string): string {
+	return id
+		.replace(/\\/g, "/")
+		.replace(/\.mdx?$/i, "")
+		.replace(/\/index$/, "")
+		.replace(/^\/+|\/+$/g, "");
+}
+
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
@@ -21,11 +29,11 @@ export async function getSortedPosts() {
 	const sorted = await getRawSortedPosts();
 
 	for (let i = 1; i < sorted.length; i++) {
-		sorted[i].data.nextSlug = sorted[i - 1].slug;
+		sorted[i].data.nextSlug = postIdToSlug(sorted[i - 1].id);
 		sorted[i].data.nextTitle = sorted[i - 1].data.title;
 	}
 	for (let i = 0; i < sorted.length - 1; i++) {
-		sorted[i].data.prevSlug = sorted[i + 1].slug;
+		sorted[i].data.prevSlug = postIdToSlug(sorted[i + 1].id);
 		sorted[i].data.prevTitle = sorted[i + 1].data.title;
 	}
 
@@ -40,7 +48,7 @@ export async function getSortedPostsList(): Promise<PostForList[]> {
 
 	// delete post.body
 	const sortedPostsList = sortedFullPosts.map((post) => ({
-		slug: post.slug,
+		slug: postIdToSlug(post.id),
 		data: post.data,
 	}));
 

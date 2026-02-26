@@ -1,86 +1,71 @@
-# 🍥Fuwari
+﻿# Niyu Blog 使用说明（中文）
 
-基于 [Astro](https://astro.build) 开发的静态博客模板。
+本项目基于 Fuwari 深度改造，已升级到 Astro 6 beta、Tailwind CSS 4、daisyUI 5，并调整为 Argon 风格主题体系。
 
-[**🖥️在线预览（Vercel）**](https://fuwari.vercel.app)
+## 环境要求
 
-![Preview Image](https://raw.githubusercontent.com/saicaca/resource/main/fuwari/home.png)
+- Node.js `>= 24`
+- pnpm `>= 10`（建议 `10.30.1`）
 
-## ✨ 功能特性
+## 快速开始
 
-- [x] 基于 Astro 和 Tailwind CSS 开发
-- [x] 流畅的动画和页面过渡
-- [x] 亮色 / 暗色模式
-- [x] 自定义主题色和横幅图片
-- [x] 响应式设计
-- [ ] 评论
-- [x] 搜索
-- [x] 文内目录
-
-## 👀 要求
-
-- Node.js <= 22
-- pnpm <= 9
-
-## 🚀 使用方法 1
-
-使用 [create-fuwari](https://github.com/L4Ph/create-fuwari) 在本地初始化项目。
-
-```sh
-# npm
-npm create fuwari@latest
-
-# yarn
-yarn create fuwari
-
-# pnpm
-pnpm create fuwari@latest
-
-# bun
-bun create fuwari@latest
-
-# deno
-deno run -A npm:create-fuwari@latest
+```bash
+corepack enable
+corepack use pnpm@10.30.1
+pnpm install
+pnpm dev
 ```
 
-1. 通过配置文件 `src/config.ts` 自定义博客
-2. 执行 `pnpm new-post <filename>` 创建新文章，并在 `src/content/posts/` 目录中编辑
-3. 参考[官方指南](https://docs.astro.build/zh-cn/guides/deploy/)将博客部署至 Vercel, Netlify, GitHub Pages 等；部署前需编辑 `astro.config.mjs` 中的站点设置。
+默认访问：`http://localhost:4321`
 
-## 🚀 使用方法 2
+## 常用命令
 
-1. 使用此模板[生成新仓库](https://github.com/saicaca/fuwari/generate)或 Fork 此仓库
-2. 进行本地开发，Clone 新的仓库，执行 `pnpm install` 和 `pnpm add sharp` 以安装依赖  
-   - 若未安装 [pnpm](https://pnpm.io)，执行 `npm install -g pnpm`
-3. 通过配置文件 `src/config.ts` 自定义博客
-4. 执行 `pnpm new-post <filename>` 创建新文章，并在 `src/content/posts/` 目录中编辑
-5. 参考[官方指南](https://docs.astro.build/zh-cn/guides/deploy/)将博客部署至 Vercel, Netlify, GitHub Pages 等；部署前需编辑 `astro.config.mjs` 中的站点设置。
+| 命令 | 说明 |
+| --- | --- |
+| `pnpm dev` | 启动本地开发服务器 |
+| `pnpm build` | 生产构建并生成 Pagefind 搜索索引 |
+| `pnpm preview` | 预览生产构建结果 |
+| `pnpm check` | Astro 类型与内容检查 |
+| `pnpm type-check` | TypeScript 检查 |
+| `pnpm format` | Biome 格式化 |
+| `pnpm lint` | Biome 检查并修复 |
+| `pnpm new-post <slug>` | 创建新文章模板 |
 
-## ⚙️ 文章 Frontmatter
+## 关键配置文件
+
+- 站点与主题配置：`src/config.ts`
+- Astro 配置：`astro.config.mjs`
+- 主样式入口：`src/styles/main.css`
+- 主题变量：`src/styles/variables.styl`
+
+## 文章 Frontmatter 示例
 
 ```yaml
 ---
-title: My First Blog Post
-published: 2023-09-09
-description: This is the first post of my new Astro blog.
-image: ./cover.jpg
-tags: [Foo, Bar]
-category: Front-end
+title: 我的第一篇文章
+published: 2026-02-26
+description: 文章摘要
+image: ./cover.png
+tags: [Astro, Blog]
+category: 技术
 draft: false
-lang: jp      # 仅当文章语言与 `config.ts` 中的网站语言不同时需要设置
 ---
 ```
 
-## 🧞 指令
+## 搜索说明
 
-下列指令均需要在项目根目录执行：
+- 开发环境优先使用本地 `search-index.json`。
+- 生产环境使用 Pagefind 索引（`pnpm build` 后生效）。
 
-| Command                           | Action                            |
-|:----------------------------------|:----------------------------------|
-| `pnpm install` 并 `pnpm add sharp` | 安装依赖                              |
-| `pnpm dev`                        | 在 `localhost:4321` 启动本地开发服务器      |
-| `pnpm build`                      | 构建网站至 `./dist/`                   |
-| `pnpm preview`                    | 本地预览已构建的网站                        |
-| `pnpm new-post <filename>`        | 创建新文章                             |
-| `pnpm astro ...`                  | 执行 `astro add`, `astro check` 等指令 |
-| `pnpm astro --help`               | 显示 Astro CLI 帮助                   |
+## 部署说明
+
+`deploy/` 目录已提供常见平台缓存头模板：
+
+- `deploy/vercel/vercel.json`
+- `deploy/cloudflare-pages/_headers`
+- `deploy/nginx/astro-static-cache.conf`
+
+## 主题 Token 维护
+
+- 中文文档：`docs/THEME_TOKENS.zh-CN.md`
+- 英文文档：`docs/THEME_TOKENS.en.md`

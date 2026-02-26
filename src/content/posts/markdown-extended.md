@@ -1,95 +1,94 @@
 ---
-title: Markdown Extended Features
+title: Markdown 扩展功能示例
 published: 2024-05-01
 updated: 2024-11-29
-description: 'Read more about Markdown features in Fuwari'
+description: "在 Fuwari 中体验更多 Markdown 扩展能力"
 image: ''
-tags: [Demo, Example, Markdown, Fuwari]
-category: 'Examples'
+tags: [示例, Markdown, Fuwari]
+category: "示例"
 draft: false 
 ---
 
-## GitHub Repository Cards
-You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API. 
+## GitHub 仓库卡片
+可以插入一个动态仓库卡片。页面加载时会请求 GitHub API 并展示仓库信息。
 
 ::github{repo="Fabrizz/MMM-OnSpotify"}
 
-Create a GitHub repository card with the code `::github{repo="<owner>/<repo>"}`.
+使用方式：
 
 ```markdown
 ::github{repo="saicaca/fuwari"}
 ```
 
-## Admonitions
+## 提示块（Admonitions）
 
-Following types of admonitions are supported: `note` `tip` `important` `warning` `caution`
+支持类型：`note` `tip` `important` `warning` `caution`
 
 :::note
-Highlights information that users should take into account, even when skimming.
+用于强调阅读时容易忽略但仍然重要的信息。
 :::
 
 :::tip
-Optional information to help a user be more successful.
+用于补充技巧或建议。
 :::
 
 :::important
-Crucial information necessary for users to succeed.
+用于必须关注的关键说明。
 :::
 
 :::warning
-Critical content demanding immediate user attention due to potential risks.
+用于存在风险、需要立即注意的内容。
 :::
 
 :::caution
-Negative potential consequences of an action.
+用于提醒可能出现的负面后果。
 :::
 
-### Basic Syntax
+### 基础语法
 
 ```markdown
 :::note
-Highlights information that users should take into account, even when skimming.
+这里是一段提示内容
 :::
 
 :::tip
-Optional information to help a user be more successful.
+这里是一段技巧内容
 :::
 ```
 
-### Custom Titles
+### 自定义标题
 
-The title of the admonition can be customized.
+可以给提示块自定义标题。
 
 :::note[MY CUSTOM TITLE]
-This is a note with a custom title.
+这是一个带自定义标题的提示块。
 :::
 
 ```markdown
 :::note[MY CUSTOM TITLE]
-This is a note with a custom title.
+这是一个带自定义标题的提示块。
 :::
 ```
 
-### GitHub Syntax
+### GitHub 风格语法
 
 > [!TIP]
-> [The GitHub syntax](https://github.com/orgs/community/discussions/16925) is also supported.
+> 也支持 [GitHub 提示语法](https://github.com/orgs/community/discussions/16925)。
 
 ```
 > [!NOTE]
-> The GitHub syntax is also supported.
+> 这是 NOTE 样式。
 
 > [!TIP]
-> The GitHub syntax is also supported.
+> 这是 TIP 样式。
 ```
 
-### Spoiler
+### Spoiler 语法
 
-You can add spoilers to your text. The text also supports **Markdown** syntax.
+你可以在段落中插入 Spoiler，并支持 **Markdown**。
 
-The content :spoiler[is hidden **ayyy**]!
+例如：这段内容 :spoiler[默认被折叠 **点击可见**]。
 
 ```markdown
-The content :spoiler[is hidden **ayyy**]!
-
+这段内容 :spoiler[默认被折叠 **点击可见**]。
 ```

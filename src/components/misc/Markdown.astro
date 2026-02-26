@@ -7,37 +7,53 @@ interface Props {
 }
 const className = Astro.props.class;
 ---
-<div data-pagefind-body class={`prose dark:prose-invert prose-base !max-w-none custom-md ${className}`}>
-    <!--<div class="prose dark:prose-invert max-w-none custom-md">-->
-    <!--<div class="max-w-none custom-md">-->
-    <slot/>
+<div
+	data-pagefind-body
+	class={`prose dark:prose-invert prose-base markdown-prose custom-md ${className}`}
+>
+	<slot />
 </div>
 
 <script>
-document.addEventListener("click", function (e: MouseEvent) {
-    const target = e.target as Element | null;
-    if (target && target.classList.contains("copy-btn")) {
-        const preEle = target.closest("pre");
-        const codeEle = preEle?.querySelector("code");
-        const code = Array.from(codeEle?.querySelectorAll(".code:not(summary *)") ?? [])
-            .map(el => el.textContent)
-            .map(t => t === "\n" ? "" : t)
-            .join("\n");
-        navigator.clipboard.writeText(code);
+declare global {
+	interface Window {
+		__markdownCopyHandlerBound?: boolean;
+	}
+}
 
-        const timeoutId = target.getAttribute("data-timeout-id");
-        if (timeoutId) {
-            clearTimeout(parseInt(timeoutId));
-        }
+if (!window.__markdownCopyHandlerBound) {
+	const timeoutMap = new WeakMap<Element, number>();
 
-        target.classList.add("success");
+	document.addEventListener("click", (e: MouseEvent) => {
+		const target = e.target as Element | null;
+		if (!target || !target.classList.contains("copy-btn")) {
+			return;
+		}
 
-        // 设置新的timeout并保存ID到按钮的自定义属性中
-        const newTimeoutId = setTimeout(() => {
-            target.classList.remove("success");
-        }, 1000);
+		const preEle = target.closest("pre");
+		const codeEle = preEle?.querySelector("code");
+		const code = Array.from(codeEle?.querySelectorAll(".code:not(summary *)") ?? [])
+			.map((el) => el.textContent)
+			.map((text) => (text === "\n" ? "" : text ?? ""))
+			.join("\n");
 
-        target.setAttribute("data-timeout-id", newTimeoutId.toString());
-    }
-});
+		if (navigator.clipboard && code) {
+			void navigator.clipboard.writeText(code);
+		}
+
+		const currentTimeout = timeoutMap.get(target);
+		if (currentTimeout) {
+			window.clearTimeout(currentTimeout);
+		}
+
+		target.classList.add("success");
+		const newTimeout = window.setTimeout(() => {
+			target.classList.remove("success");
+			timeoutMap.delete(target);
+		}, 1000);
+		timeoutMap.set(target, newTimeout);
+	});
+
+	window.__markdownCopyHandlerBound = true;
+}
 </script>

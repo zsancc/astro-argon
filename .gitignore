@@ -29,3 +29,11 @@ yarn.lock
 # ide
 .idea
 *.iml
+
+#临时文件
+.env.local
+.env.*.local
+coverage/
+*.tmp
+_tmp_*
+

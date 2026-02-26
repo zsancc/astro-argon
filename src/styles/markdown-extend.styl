@@ -1,4 +1,4 @@
-.custom-md
+﻿.custom-md
 
   blockquote.admonition
     .bdm-title
@@ -75,7 +75,7 @@
     border-radius: 0.75rem
 
   hr
-    border-color: var(--line-divider)
+    border-color: var(--border-divider)
     border-style: dashed
 
   iframe
@@ -96,10 +96,10 @@ a.card-github
   text-decoration-line: none
 
   &:hover
-    background-color: var(--btn-regular-bg-hover)
+    background-color: var(--surface-soft-hover)
 
     .gc-titlebar
-      color: var(--btn-content)
+      color: var(--accent-content)
 
     .gc-stars, .gc-forks, .gc-license, .gc-description
       color: var(--tw-prose-headings)
@@ -109,7 +109,7 @@ a.card-github
 
   &:active
     scale: .98
-    background-color: var(--btn-regular-bg-active);
+    background-color: var(--surface-soft-active);
 
   .gc-titlebar
     display: flex
@@ -243,3 +243,4 @@ a.card-github.fetch-error
   transition-property: all
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
   transition-duration: 0.15s
+

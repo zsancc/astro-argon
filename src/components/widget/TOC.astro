@@ -1,4 +1,4 @@
----
+﻿---
 import type { MarkdownHeading } from "astro";
 import { siteConfig } from "../../config";
 import { url } from "../../utils/url-utils";
@@ -6,9 +6,10 @@ import { url } from "../../utils/url-utils";
 interface Props {
 	class?: string;
 	headings: MarkdownHeading[];
+	embedded?: boolean;
 }
 
-let { headings = [] } = Astro.props;
+let { headings = [], embedded = false } = Astro.props;
 
 let minDepth = 10;
 for (const heading of headings) {
@@ -30,33 +31,37 @@ const removeTailingHash = (text: string) => {
 let heading1Count = 1;
 
 const maxLevel = siteConfig.toc.depth;
+const containerClass = embedded
+	? "group"
+	: "group card card-compact widget-shell p-3";
+const itemClass = embedded
+	? "px-2 flex gap-2 relative transition w-full min-h-8 rounded-lg hover:bg-[var(--toc-surface-hover)] active:bg-[var(--toc-surface-active)] py-1.5"
+	: "px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl hover:bg-[var(--toc-surface-hover)] active:bg-[var(--toc-surface-active)] py-2";
 ---
 {isPostsRoute &&
-<table-of-contents class:list={[className, "group"]}>
+<table-of-contents class:list={[className, containerClass]}>
     {headings.filter((heading) => heading.depth < minDepth + maxLevel).map((heading) =>
-            <a href={`#${heading.slug}`} class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
-        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
-    ">
+            <a href={`#${heading.slug}`} class={itemClass}>
                 <div class:list={["transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold",
                     {
-                        "bg-[var(--toc-badge-bg)] text-[var(--btn-content)]": heading.depth == minDepth,
+                        "bg-(--toc-chip-bg) text-(--accent-content)": heading.depth == minDepth,
                         "ml-4": heading.depth == minDepth + 1,
                         "ml-8": heading.depth == minDepth + 2,
                     }
                 ]}
                 >
                     {heading.depth == minDepth && heading1Count++}
-                    {heading.depth == minDepth + 1 && <div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div>}
-                    {heading.depth == minDepth + 2 && <div class="transition w-1.5 h-1.5 rounded-sm bg-black/5 dark:bg-white/10"></div>}
+                    {heading.depth == minDepth + 1 && <div class="transition w-2 h-2 rounded-[0.1875rem] bg-(--toc-chip-bg)"></div>}
+                    {heading.depth == minDepth + 2 && <div class="transition w-1.5 h-1.5 rounded-sm bg-(--surface-soft-active)"></div>}
                 </div>
-                <div class:list={["transition text-sm", {
+                <div class:list={["transition text-[0.875rem]/[1.35rem]", {
                     "text-50": heading.depth == minDepth || heading.depth == minDepth + 1,
                     "text-30": heading.depth == minDepth + 2,
                 }]}>{removeTailingHash(heading.text)}</div>
             </a>
     )}
-    <div id="active-indicator" style="opacity: 0" class:list={[{'hidden': headings.length == 0}, "-z-10 absolute bg-[var(--toc-btn-hover)] left-0 right-0 rounded-xl transition-all " +
-        "group-hover:bg-transparent border-2 border-[var(--toc-btn-hover)] group-hover:border-[var(--toc-btn-active)] border-dashed"]}></div>
+    <div id="active-indicator" style="opacity: 0" class:list={[{'hidden': headings.length == 0}, "-z-10 absolute bg-(--toc-surface-hover) left-0 right-0 rounded-xl transition-all " +
+        "group-hover:bg-transparent border-2 border-(--toc-surface-hover) group-hover:border-(--toc-surface-active) border-dashed"]}></div>
 </table-of-contents>}
 
 <script>
@@ -207,9 +212,9 @@ class TableOfContents extends HTMLElement {
             element.addEventListener('animationend', () => {
                 this.init();
             }, { once: true });
-        } else {
-            console.debug('Animation element not found');
+            return;
         }
+        this.init();
     };
 
     init() {

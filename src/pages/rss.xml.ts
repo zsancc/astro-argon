@@ -1,10 +1,10 @@
-import rss from "@astrojs/rss";
+﻿import rss from "@astrojs/rss";
 import { getSortedPosts, postIdToSlug } from "@utils/content-utils";
 import { url } from "@utils/url-utils";
 import type { APIContext } from "astro";
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
-import { siteConfig } from "@/config";
+import { globalConfig, siteConfig } from "@/config";
 
 const parser = new MarkdownIt();
 
@@ -21,8 +21,8 @@ export async function GET(context: APIContext) {
 
 	return rss({
 		title: siteConfig.title,
-		description: siteConfig.subtitle || "No description",
-		site: context.site ?? "https://niyu.cc",
+		description: siteConfig.subtitle || globalConfig.rssDescriptionFallback,
+		site: context.site ?? globalConfig.siteUrl,
 		items: blog.map((post) => {
 			const content =
 				typeof post.body === "string" ? post.body : String(post.body || "");
@@ -40,3 +40,4 @@ export async function GET(context: APIContext) {
 		customData: `<language>${siteConfig.lang}</language>`,
 	});
 }
+

@@ -1,6 +1,6 @@
 ﻿# Niyu Blog Documentation (English)
 
-This project is a heavily customized Fuwari-based blog, upgraded to Astro 6 beta, Tailwind CSS 4, and daisyUI 5, with an Argon-style theme system.
+This project is a Fuwari-based Astro blog template with Argon-style refactor and centralized configuration in `src/config.ts`.
 
 ## Requirements
 
@@ -16,7 +16,50 @@ pnpm install
 pnpm dev
 ```
 
-Default URL: `http://localhost:4321`
+Open: `http://localhost:4321`
+
+## Template Workflow
+
+1. Use this template (or fork it) on GitHub.
+2. Clone your own repo.
+3. Edit `src/config.ts` (single source of config).
+4. Verify locally.
+5. Deploy to Vercel / Cloudflare Pages / self-hosted server.
+
+## Configuration (All In config.ts)
+
+File: `src/config.ts`
+
+- `globalConfig`: site URL, repo text/url, RSS fallback, Astro base/trailingSlash
+- `siteConfig`: title, subtitle, language, themes, banner, TOC, favicon
+- `navBarConfig`: top navigation links
+- `profileConfig`: avatar, profile name, bio, social links
+- `licenseConfig`: post license block switch/content
+- `expressiveCodeConfig`: code theme
+
+No CMS backend files are required.
+
+## Deployment
+
+Output directory: `dist/`
+
+### Vercel
+
+- Build command: `pnpm build`
+- Output directory: `dist`
+- Cache headers: `vercel.json`
+
+### Cloudflare Pages
+
+- Build command: `pnpm build`
+- Output directory: `dist`
+- Cache headers: `public/_headers`
+
+### Self-Hosted (Nginx)
+
+1. Run `pnpm build`.
+2. Upload `dist/` to your server.
+3. Apply cache rules from `deploy/nginx/astro-static-cache.conf`.
 
 ## Common Commands
 
@@ -27,43 +70,7 @@ Default URL: `http://localhost:4321`
 | `pnpm preview` | Preview production output locally |
 | `pnpm check` | Run Astro checks |
 | `pnpm type-check` | Run TypeScript checks |
-| `pnpm format` | Format source files with Biome |
-| `pnpm lint` | Lint/fix source files with Biome |
 | `pnpm new-post <slug>` | Create a new post scaffold |
-
-## Key Config Files
-
-- Site and theme config: `src/config.ts`
-- Astro config: `astro.config.mjs`
-- Main style entry: `src/styles/main.css`
-- Theme variables: `src/styles/variables.styl`
-
-## Post Frontmatter Example
-
-```yaml
----
-title: My First Post
-published: 2026-02-26
-description: Post summary
-image: ./cover.png
-tags: [Astro, Blog]
-category: Tech
-draft: false
----
-```
-
-## Search Behavior
-
-- In development, local `search-index.json` is used first.
-- In production, Pagefind index is used after `pnpm build`.
-
-## Deployment
-
-Cache templates are provided in `deploy/`:
-
-- `deploy/vercel/vercel.json`
-- `deploy/cloudflare-pages/_headers`
-- `deploy/nginx/astro-static-cache.conf`
 
 ## Theme Token Guide
 

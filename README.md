@@ -1,19 +1,18 @@
-﻿# Niyu Blog (Astro + Fuwari Refactor)
+﻿# Niyu Blog Template (Astro + Argon Style)
 
-`Niyu` is a deeply customized personal blog project based on Fuwari, upgraded to Astro 6 beta, Tailwind CSS 4, and daisyUI 5.
+A Fuwari-based Astro blog template, refactored for Argon-style UI and simpler maintenance.
+
+- Astro `6.0.0-beta.14`
+- Tailwind CSS `4.2.1`
+- daisyUI `5.5.19`
+- Pagefind search
 
 ## Languages
 
 - [中文](docs/README.zh-CN.md)
 - [English](docs/README.en.md)
 
-## Tech Stack
-
-- Astro `6.0.0-beta.14`
-- Tailwind CSS `4.2.1`
-- daisyUI `5.5.19`
-- Svelte `5.x` (for interactive widgets)
-- Pagefind (production search index)
+Site language supports only `zh_CN` and `en`.
 
 ## Requirements
 
@@ -29,37 +28,61 @@ pnpm install
 pnpm dev
 ```
 
-Open `http://localhost:4321`.
+Visit `http://localhost:4321`.
+
+## Template Usage
+
+1. Use this template (or fork it) on GitHub.
+2. Clone your own repo.
+3. Edit `src/config.ts` (all site config is centralized there).
+4. Run and verify locally.
+5. Deploy to Vercel / Cloudflare Pages / self-hosted server.
+
+## Configuration (Single Source)
+
+All configurable values are in `src/config.ts`:
+
+- `globalConfig`: `siteUrl`, repo name/url, RSS fallback, Astro base/trailingSlash
+- `siteConfig`: title, subtitle, language, theme set, banner, TOC, favicon
+- `navBarConfig`: top navigation links
+- `profileConfig`: sidebar profile name/bio/avatar/social links
+- `licenseConfig`: post license block switch/content
+- `expressiveCodeConfig`: code block theme
+
+No CMS config files are required.
+
+## Deployment
+
+Static output is in `dist/`.
+
+### Vercel
+
+- Build command: `pnpm build`
+- Output directory: `dist`
+- Cache headers: `vercel.json`
+
+### Cloudflare Pages
+
+- Build command: `pnpm build`
+- Output directory: `dist`
+- Cache headers: `public/_headers`
+
+### Self-Hosted (Nginx)
+
+1. Run `pnpm build`.
+2. Upload `dist/` to server.
+3. Apply `deploy/nginx/astro-static-cache.conf` cache rules.
 
 ## Common Commands
 
 | Command | Description |
 | --- | --- |
 | `pnpm dev` | Start local dev server |
-| `pnpm build` | Build to `dist/` and generate Pagefind index |
+| `pnpm build` | Build `dist/` and generate Pagefind index |
 | `pnpm preview` | Preview production build |
 | `pnpm check` | Run Astro type/content checks |
 | `pnpm type-check` | Run TypeScript check (`tsc`) |
-| `pnpm format` | Format source files with Biome |
-| `pnpm lint` | Lint/fix source files with Biome |
 | `pnpm new-post <slug>` | Create a new post scaffold |
-
-## Key Files
-
-- Site and theme config: `src/config.ts`
-- Astro config: `astro.config.mjs`
-- Main style layer: `src/styles/main.css`
-- Theme tokens: `src/styles/variables.styl`
-- Theme token guide (CN): `docs/THEME_TOKENS.zh-CN.md`
-- Theme token guide (EN): `docs/THEME_TOKENS.en.md`
-
-## Deployment Notes
-
-Cache header templates are provided in `deploy/`:
-
-- `deploy/vercel/vercel.json`
-- `deploy/cloudflare-pages/_headers`
-- `deploy/nginx/astro-static-cache.conf`
 
 ## License
 

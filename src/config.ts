@@ -1,4 +1,4 @@
-import type {
+﻿import type {
 	ExpressiveCodeConfig,
 	LicenseConfig,
 	NavBarConfig,
@@ -7,45 +7,43 @@ import type {
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
+const siteUrl = "https://niyu.cc/";
+const repoName = "Niyu";
+const repoUrl = "https://github.com/zsancc/niyu";
+
+export const globalConfig = {
+	siteUrl,
+	repoName,
+	repoUrl,
+	rssDescriptionFallback: "No description",
+	astroBase: "/",
+	astroTrailingSlash: "always" as const,
+};
+
 export const siteConfig: SiteConfig = {
 	title: "啾啾のBlog",
 	subtitle: "啾啾のBlog",
-	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
+	lang: "zh_CN",
 	themeColor: {
-		fixed: false, // Show the theme palette button in the navbar
-		defaultTheme: "argon", // Argon-like theme based on daisyUI, used on first visit
-		themes: [
-			"argon",
-			"argon-dark",
-			"winter",
-			"nord",
-			"silk",
-			"lofi",
-			"dracula",
-		], // Keep this list in sync with src/styles/global.css daisyUI themes
+		fixed: false,
+		defaultTheme: "argon",
+		themes: ["argon", "argon-dark", "winter", "nord", "silk", "lofi", "dracula"],
 	},
 	banner: {
 		enable: false,
-		src: "assets/images/demo-banner.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
+		src: "assets/images/demo-banner.png",
+		position: "center",
 		credit: {
-			enable: false, // Display the credit text of the banner image
-			text: "", // Credit text to be displayed
-			url: "", // (Optional) URL link to the original artwork or artist's page
+			enable: false,
+			text: "",
+			url: "",
 		},
 	},
 	toc: {
-		enable: true, // Display the table of contents on the right side of the post
-		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
+		enable: true,
+		depth: 2,
 	},
-	favicon: [
-		// Leave this array empty to use the default favicon
-		// {
-		//   src: '/favicon/icon.png',    // Path of the favicon, relative to the /public directory
-		//   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
-		//   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
-		// }
-	],
+	favicon: [],
 };
 
 export const navBarConfig: NavBarConfig = {
@@ -53,36 +51,18 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		LinkPreset.About,
-		{
-			name: "GitHub",
-			url: "https://github.com/zsancc/niyu", // Internal links should not include the base path, as it is automatically added
-			external: true, // Show an external link icon and will open in a new tab
-		},
+		{ name: "GitHub", url: repoUrl, external: true },
 	],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	avatar: "assets/images/demo-avatar.png",
 	name: "啾啾のBlog",
 	bio: "饿了吃，吃了拉，拉了还得饿；拉了饿，饿了吃，吃了还得拉",
 	links: [
-		{
-			name: "Twitter",
-			icon: "fa6-brands:twitter", // Visit https://icones.js.org/ for icon codes
-			// You will need to install the corresponding icon set if it's not already included
-			// `pnpm add @iconify-json/<icon-set-name>`
-			url: "https://twitter.com",
-		},
-		{
-			name: "Steam",
-			icon: "fa6-brands:steam",
-			url: "https://store.steampowered.com",
-		},
-		{
-			name: "GitHub",
-			icon: "fa6-brands:github",
-			url: "https://github.com/zsancc/niyu",
-		},
+		{ name: "Twitter", icon: "fa6-brands:twitter", url: "https://twitter.com" },
+		{ name: "Steam", icon: "fa6-brands:steam", url: "https://store.steampowered.com" },
+		{ name: "GitHub", icon: "fa6-brands:github", url: repoUrl },
 	],
 };
 
@@ -93,7 +73,5 @@ export const licenseConfig: LicenseConfig = {
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
-	// Note: Some styles (such as background color) are being overridden, see the astro.config.mjs file.
-	// Please select a dark theme, as this blog theme currently only supports dark background color
 	theme: "github-dark",
 };

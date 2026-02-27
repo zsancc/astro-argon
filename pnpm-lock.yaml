@@ -15,8 +15,8 @@ importers:
         specifier: ^3.7.0
         version: 3.7.0
       '@astrojs/svelte':
-        specifier: 8.0.0-beta.2
-        version: 8.0.0-beta.2(@types/node@25.3.0)(astro@6.0.0-beta.14(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.31.1)(rollup@2.80.0)(sass@1.80.4)(stylus@0.64.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.80.4)(stylus@0.64.0)(svelte@5.53.3)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+        specifier: 8.0.0-beta.3
+        version: 8.0.0-beta.3(@types/node@25.3.0)(astro@6.0.0-beta.14(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.31.1)(rollup@2.80.0)(sass@1.80.4)(stylus@0.64.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.80.4)(stylus@0.64.0)(svelte@5.53.3)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       '@expressive-code/core':
         specifier: ^0.41.6
         version: 0.41.6
@@ -211,8 +211,8 @@ packages:
   '@astrojs/sitemap@3.7.0':
     resolution: {integrity: sha512-+qxjUrz6Jcgh+D5VE1gKUJTA3pSthuPHe6Ao5JCxok794Lewx8hBFaWHtOnN0ntb2lfOf7gvOi9TefUswQ/ZVA==}
 
-  '@astrojs/svelte@8.0.0-beta.2':
-    resolution: {integrity: sha512-Q+ipDoHxZTt3KCST7vO6S6WUXSFiMDaDhK/wQGgLubDtcvGH6j+u74Lkz3mRqtOMOIMGivXUZauInXrBaq99PA==}
+  '@astrojs/svelte@8.0.0-beta.3':
+    resolution: {integrity: sha512-0+qa5Fp+y56OVOnIwjH23mgQzniB94ax+54XuxmdPzFY5sZwbzkswvq3JSWzPoty3q0V54DKoeNLDY/YQDUvkg==}
     engines: {node: ^20.19.1 || >=22.12.0}
     peerDependencies:
       astro: ^6.0.0-alpha.0
@@ -2937,6 +2937,7 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   glob@7.2.3:
@@ -4717,6 +4718,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   terser@5.46.0:
     resolution: {integrity: sha512-jTwoImyr/QbOWFFso3YoU3ik0jBBDJ6JTOQiy/J2YxVJdZCc+5u7skhNwiOR3FQIygFqVUPHl7qbbxtjW2K3Qg==}
@@ -5117,6 +5119,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -5316,7 +5319,7 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.76
 
-  '@astrojs/svelte@8.0.0-beta.2(@types/node@25.3.0)(astro@6.0.0-beta.14(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.31.1)(rollup@2.80.0)(sass@1.80.4)(stylus@0.64.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.80.4)(stylus@0.64.0)(svelte@5.53.3)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)':
+  '@astrojs/svelte@8.0.0-beta.3(@types/node@25.3.0)(astro@6.0.0-beta.14(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.31.1)(rollup@2.80.0)(sass@1.80.4)(stylus@0.64.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.80.4)(stylus@0.64.0)(svelte@5.53.3)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 6.2.4(svelte@5.53.3)(vite@7.3.1(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.80.4)(stylus@0.64.0)(terser@5.46.0)(yaml@2.8.2))
       astro: 6.0.0-beta.14(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.31.1)(rollup@2.80.0)(sass@1.80.4)(stylus@0.64.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)

@@ -1,8 +1,8 @@
 # 关于
 
-这是 [Fuwari](https://github.com/saicaca/fuwari) 的演示站点，你可以把它作为个人博客模板快速改造。
+这是 [astro-Argon](https://github.com/zsancc/astro-argon) 的演示站点，你可以把它作为个人博客模板快速改造。
 
-::github{repo="saicaca/fuwari"}
+::github{repo="zsancc/astro-argon"}
 
 > ### 站点图片来源
 > - [Unsplash](https://unsplash.com/)

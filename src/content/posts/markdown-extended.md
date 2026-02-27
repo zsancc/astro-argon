@@ -2,9 +2,9 @@
 title: Markdown 扩展功能示例
 published: 2024-05-01
 updated: 2024-11-29
-description: "在 Fuwari 中体验更多 Markdown 扩展能力"
+description: "在 Astro-Argon 中体验更多 Markdown 扩展能力"
 image: ''
-tags: [示例, Markdown, Fuwari]
+tags: [示例, Markdown, Astro]
 category: "示例"
 draft: false 
 ---
@@ -17,7 +17,7 @@ draft: false
 使用方式：
 
 ```markdown
-::github{repo="saicaca/fuwari"}
+::github{repo="zsancc/astro-argon"}
 ```
 
 ## 提示块（Admonitions）

@@ -1,9 +1,9 @@
 ---
-title: Fuwari 使用指南
+title: Astro-Argon 使用指南
 published: 2024-04-01
 description: "如何使用这个 Astro 博客模板。"
 image: "./cover.jpeg"
-tags: ["Fuwari", "博客", "自定义"]
+tags: ["Astro", "博客", "自定义"]
 category: 指南
 draft: false
 ---

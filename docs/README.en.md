@@ -1,4 +1,4 @@
-﻿# Niyu Blog Documentation (English)
+﻿# Astro-Argon Blog Documentation (English)
 
 This project is a Fuwari-based Astro blog template with Argon-style refactor and centralized configuration in `src/config.ts`.
 

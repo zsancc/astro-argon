@@ -93,11 +93,11 @@ function bindPanelToggle(buttonId: string, panelId: string) {
     });
 }
 
-const windowState = window as Window & { __niyuPanelToggleBound__?: boolean };
-if (!windowState.__niyuPanelToggleBound__) {
+const windowState = window as Window & { __astroArgonPanelToggleBound__?: boolean };
+if (!windowState.__astroArgonPanelToggleBound__) {
     bindPanelToggle("display-settings-switch", "display-setting");
     bindPanelToggle("nav-menu-switch", "nav-menu-panel");
-    windowState.__niyuPanelToggleBound__ = true;
+    windowState.__astroArgonPanelToggleBound__ = true;
 }
 </script>
 

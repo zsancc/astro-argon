@@ -1,4 +1,4 @@
-﻿# Niyu Blog Template (Astro + Argon Style)
+﻿# Astro-Argon Blog Template (Astro + Argon Style)
 
 A Fuwari-based Astro blog template, refactored for Argon-style UI and simpler maintenance.
 
